@@ -21,14 +21,40 @@ module.exports = function(router) {
   });
   router.get('/api/photo/:_id', bearerAuth, (req, res) => {
 
+    return Photo.findById(req.params._id)
+    .then(photo => res.json(photo))
+    .catch(err => errorHandler(err, req, res));
   });
   router.get('/api/photo', bearerAuth, (req, res) => {
-
+    return Photo.find()
+    .then(photos => res.json(photos.map(photo => photo._id)));
   });
+
   router.put('/api/photo/:_id', bearerAuth, upload.single('image'), (req, res) => {
+
+    return Photo.findById(req.params._id)
+    .then(photo => {
+      if(photo.userId.toString() === req.user._id.toString()) {
+        photo.name = req.body.name || photo.name;
+        photo.desc = req.body.desc || photo.desc;
+        return photo.save();
+      }
+      errorHandler(new Error('authorization failed; user does not own gallery, and cannot update'), req, res);
+    })
+    .then(() => res.sendStatus(204))
+    .catch(err => errorHandler(err, req, res));
 
   });
   router.delete('/api/photo/:_id', bearerAuth, (req, res) => {
 
-  })
+    return Photo.findById(req.params._id)
+    .then(photo => {
+      if(photo.userId.toString() === req.user._id.toString()) return photo.remove();
+      errorHandler(new Error('authorization failed; user does not own photo, and cannot delete'), req, res);
+    })
+    .then(() => res.sendStatus(204))
+    .catch(err => errorHandler(err, req, res));
+  });
+
+
 };
