@@ -21,12 +21,12 @@ module.exports = function(req, res, next) {
     }
 
     User.findOne({ findHash: decoded.token })
-    .then(user => {
-      if(!user) return errorHandler(new Error('authorization failed; user does not exist'), req, res);
-      delete user.password;
-      req.user = user;
-      next();
-    })
-    .catch(err => errorHandler(err, req, res));
+      .then(user => {
+        if(!user) return errorHandler(new Error('authorization failed; user does not exist'), req, res);
+        delete user.password;
+        req.user = user;
+        next();
+      })
+      .catch(err => errorHandler(err, req, res));
   });
 };
