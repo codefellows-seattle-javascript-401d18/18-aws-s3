@@ -9,7 +9,8 @@ mocks.user = {};
 mocks.gallery = {};
 
 mocks.user.createOne = function() {
-  let result = {};
+  let result; //added this to define result and shut up the linter
+  this.result = {};
   result.password = faker.internet.password();
 
   let user = new User({
@@ -17,43 +18,39 @@ mocks.user.createOne = function() {
     email: faker.internet.email()
   });
 
-  return user.generatePasswordHash(result.password)
+  return user.generatePasswordHash(this.result.password)
     .then(user => {
-      result.user = user;
+      this.result.user = user;
       return user.save();
     })
     .then(user => user.generateToken())
     .then(token => {
-      result.token = token;
-      return result;
+      this.result.token = token;
+      return this.result;
     });
 };
 
 mocks.gallery.createOne = function() {
-  let results;
-
   return mocks.user.createOne()
-    .then(userData => results = userData)
+    .then(userData => this.result = userData)
     .then(userData => {
       return new Gallery({
-        name: faker.random.domainWord(),
+        name: faker.internet.domainWord(),
         desc: faker.random.words(12),
         userId: userData.user._id
       }).save();
     })
     .then(gallery => {
-      this.results.gallery = gallery;
-      return this.results;
+      this.result.gallery = gallery;
+      return this.result;
     });
 };
-
 
 mocks.gallery.removeAll = function() {
   return Promise.all([
     Gallery.remove()
   ]);
 };
-
 mocks.user.removeAll = function() {
   return Promise.all([
     User.remove()

@@ -1,6 +1,7 @@
 'use strict';
 
 const Gallery = require('../model/gallery');
+const jsonParser = require('body-parser').json()
 const errorHandler = require('../lib/error-handler');
 const debug = require('debug')('cfgram:route-gallery');
 const bearerAuth = require('../lib/bearer-auth-middleware');
