@@ -1,9 +1,22 @@
+# 18-Isaiah
 
+### Configuration
+```md
+  * \__test__ (folder: contains a lib/ folder(handles the jest setup, test-env, and mock ups) and routes/ folder(handles the basic auth tests, gallery tests, and photo test.))
+  * lib (folder: contains aws-s3.js, basic-auth-middleware.js, bearer-auth-middleware.js, error-handler.js, and server.js)
+  * model (folder: contains user.js which houses the user schema, photo.js which houses the photo schema, && gallery.js which houses the gallery schema)
+  * route (folder: contains route-auth.js, route-gallery.js, && route-photo.js)
+  * .travis.yml
+  * .env
+  * .gitignore
+  * .eslintrc
+  * .eslintignore
+  * package.json
+  * README.md (this file)
+```
 
-
-
-
-
+### Feature Tasks:
+* Completed feature tasks. Majority, covered today in demo. Got server up and running with success with CRUD operation command requests. Need to continue to dig through tests. See below for Lab work requirements...
 
 
 ##### Lab assignment requirements are as follows:
@@ -80,3 +93,6 @@
       * don't forget to remove the resource from the DB
 
       ```
+
+### Description:
+* Continuing to build upon our api, implemented a new resource (photo) that is aware if its user by userId and gallery by galleryId. Photo constructor contains the following properties: `name`, `desc`, `userId`, `galleryId`, `imageURI`,and `objectKey`. With end in site to this api, this lab includes `AWS` tokens in the `.env` as we gear towards deployment. Test suites need work to make req pattern of testing status responses. 
