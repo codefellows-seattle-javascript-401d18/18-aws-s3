@@ -1,76 +1,76 @@
-'use strict'
+'use strict';
 
 const faker = require('faker');
 const mocks = require('../lib/mocks');
-const superagent = require('superagent');
 const server = require('../../lib/server');
-const Gallery = require('../../model/gallery');
+const Gallery = require('../../model/gallery')
+const superagent = require('superagent');
 require('jest');
 
 describe('Testing Gallery Routes', function() {
   beforeAll(server.start);
   afterAll(server.stop);
-  afterEach(mocks.gallery.removeAll);
   afterEach(mocks.user.removeAll);
+  afterEach(mocks.gallery.removeAll);
 
-  describe('POST to /api/gallery', function() {
+  describe('POST', function() {
+    beforeAll(() => {
+      this.galleryFake = { name: faker.random.word(), desc: faker.random.words(12) }
+
+      return mocks.user.createOne()
+        .then(userData => this.userData = userData)
+        .then(() => {
+          return superagent.post(':4444/api/gallery')
+            .set('Authorization', `Bearer ${this.userData.token}`)
+            .send(this.galleryFake)
+        })
+        .then(res => this.res = res);
+    })
+
     describe('Valid Requests', () => {
-      beforeAll(() => {
-        this.fakeGalleryData = { name: faker.random.word(), desc: faker.random.words(12) };
-
-        return mocks.user.createOne()
-          .then(userData => this.userData = userData)
-          .then(() => {
-            return superagent.post(':4444/api/gallery')
-              .set('Authorization', `Bearer ${this.userData.token}`)
-              .send(this.fakeGalleryData);
-          })
-          .then(res => this.res = res);
-      });
-
-      test('should return a status of 201', () => {
-        expect(this.res.status).toBe(201);
-      });
-      test('should return a new gallery in the res', () => {
-        expect(this.res.body.name).toBe(this.fakeGalleryData.name);
-        expect(this.res.body.desc).toBe(this.fakeGalleryData.desc);
+      test('should return a status 200', () => {
+        expect(this.res.status).toBe(200);
       })
-      test('should have a userId property', () => {
+      test('should return the new gallery resource', () => {
+        expect(this.res.body.name).toBe(this.galleryFake.name);
+        expect(this.res.body.desc).toBe(this.galleryFake.desc);
+      })
+      test('should have a userId prop', () => {
         expect(this.res.body).toHaveProperty('userId');
-        expect(this.res.body.userId.toString()).toBe(this.userData.user._id.toString());
       });
     });
 
     describe('Invalid Requests', () => {
-      test('should return a status of 401 given no Auth credentials',  () => {
+      test('should return a status 401 given no Auth creds', () => {
         return superagent.post(':4444/api/gallery')
-          .send(this.fakeGalleryData)
+          .send({ name: 'wat', desc: 'who' })
           .catch(err => {
-            expect(err.status).toBe(401)
-          })
-      })
-
-      test('should return a 401 given bad Auth credintials', () => {
-        return superagent.post(':4444/api/gallery')
-          .set('Authorization', 'Bearer badToken')
-          .send(this.fakeGalleryData)
-          .catch(err => {
-            expect(err.status).toBe(401)
+            expect(err.status).toBe(401);
           });
       });
 
-      xtest('should return 400 given bad req body', () => {
+      test('should return a 401 given bad token', () => {
+        return superagent.post(':4444/api/gallery')
+          .set('Authorization', 'Bearer bad-token')
+          .send({ name: 'wat', desc: 'who' })
+          .catch(err => {
+            expect(err.status).toBe(401);
+          });
+      });
+
+      test('should return 400 given bad request body', () => {
         return superagent.post(':4444/api/gallery')
           .set('Authorization', `Bearer ${this.userData.token}`)
-          .send({})
+          .send({ name: 'wat' })
           .catch(err => {
-            expect(err.status).toBe(400)
+          // console.log(err)
+            expect(err.status).toBe(400);
           });
       });
     });
   });
 
-  describe('GET to /api/gallery', function() {
+  describe('GET', function() {
     describe('Valid Requests', () => {
 
     })
@@ -80,7 +80,7 @@ describe('Testing Gallery Routes', function() {
     })
   })
 
-  describe('PUT to /api/gallery', function() {
+  describe('PUT', function() {
     describe('Valid Requests', () => {
 
     })
@@ -90,7 +90,7 @@ describe('Testing Gallery Routes', function() {
     })
   })
 
-  describe('DELETE to /api/gallery', function() {
+  describe('DELETE', function() {
     describe('Valid Requests', () => {
 
     })
