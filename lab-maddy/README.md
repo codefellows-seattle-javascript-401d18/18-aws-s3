@@ -230,4 +230,4 @@ AWS_SECRET_ACCESS_KEY='<your_key>'
 *
 
 ### <a name="collaborators"></a>Collaborators:
-Said! Isaiah! Isaiah helped on ton with writing routes!
+Said! Isaiah! Isaiah helped a ton with writing routes!
