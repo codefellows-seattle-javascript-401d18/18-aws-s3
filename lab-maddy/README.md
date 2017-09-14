@@ -14,32 +14,33 @@
 ### <a name="whatthisprojectdoes"></a>What this project does:
 The final goal for this project is to create a mock version of instagram. We're calling it CF gram. CF gram is an app that can let users sign up, sign in, create galleries, and then add images that belong to those galleries. We will be using Amazon Web Services (AWS) as our database to store these images.
 
-Today's lab assumes the user has a token and we can now make galleries for these users. And publish them using an AWS service called S3; we will incorporate AWS in tomorrow's lab.
+Today's lab assumes the user has a token and we can now make galleries for these users. And publish them using an AWS service called S3; we will incorporate AWS.
 
 We are now using Bearer to allow the user to make updates/changes to their login information.
 
+
 ### <a name="learningobjectives"></a>Learning Objectives:
-* We will be able to create bearer authentication middleware.
-* We will be able to utilize their bearer authentication middleware in their route structures.
-* We will be able to test against authenticated routes.
+* We will be able to upload static assets to AWS S3
+* We will be able to retrieve a cdn url that contains the previously uploaded static asset
+* We will be able to work with secret and public access keys
 
 ### <a name="stepsforme"></a>Steps for me to complete:
-* create a bearer auth middleware module (feel free to use the one from lecture as a reference point)
---> DONE - bearer-auth-middleware.js
-* create a new resource that has at least three properties
---> DONE- gallery.js
-  * this resource must have a property of `userId` that references the `_id` of the user that created the resource
-  --> DONE - within gallery.js
-  ```
-  userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'user' }
-  ```
-  * the `userId` property can only be set from an `_id` found using your bearer auth middleware module
+* create an AWS account
+--> DONE
+* create an AWS Access Key and Secret
+  * add the Access Key and Secret to your `.env` file
+  --> Created a bucket, set properties, set permissions
+  * **DO NOT SHARE THESE KEYS, AND DO NOT COMMIT THEM**
+  --> BY ADDING THE KEY TO THE .env FILE IT SHOULD NEVER BE COMMITTED
+* create a new model that represents a file type that you want to store on AWS S3
+  * ex: `.mp3`, `.mp4`, `.png`, etc
   -->
-* as always, use the **npm** `debug` module to log function calls that are used within your application
+* create a test that uploads one of these files to your route
 -->
-* using the express `Router`, create routes for doing **RESTFUL CRUD** operations against your resource
---> DONE - within route-gallery.js
-
+* use the `aws-sdk` to assist with uploading
+-->
+* use `multer` to parse the file upload request
+-->
 
 ### <a name="devsteps"></a>How another dev could 'get started' with my api on their own:
   * How do you clone this project?
@@ -165,7 +166,6 @@ localhost:4000/api/signin
   - npm install faker (this gives provides us with fake data for testing things like user info- names, addresses, phone numbers, etc) - DONE
 
 #### General notes/changes made from previous projects:
-- Created an index.js and set it as the start point in package.json.
 - Created a .env file with the following:
   - Note: The angle brackets are just placeholders and should not be included in your code.
 
@@ -195,14 +195,40 @@ PORT=<a port number>
 ```
 - Added multer to package.json
 - Added aws-sdk to package.json
+- Added a .travis.yml file
+- New package: del - creates binary representation of an image, del deletes that stuff after hte image is in allows
+- New package: multer- have a form where we can upload an image and it's going to get sent as form data not raw json cause we can't translate a raw image as raw json we have to send it as ....breaks it down. its middleware. uses binary data to upload to s3 then deletes that binary file.
+- In server.js we 'server.stop = () => {'' the server and .close() the mongoConnection.
+- Bucket name: cf-401-maddybucket
+- Signed up for billing email notifications, for the 1% off chance that someone gets ahold of my AWS key.
+
+#### How to make an AWS bucket:
+1. create bucket- cf-401-maddybucket
+2. console home
+3. users
+4. Add user - cd-401-secondary, check programatic access
+5. Create group- 401-s3, check amazonS3FullAccess (with this people can't create EC2 instances! This is good!)
+6. Click Next
+7. Click Create User
+8. Should see a green 'Success'
+9. Click the next button, should see Access Key ID and Secret access key
+
+#### How to configure your .env file:
+```
+PORT='8000'
+  MONGODB_URI='mongodb://localhost/yourdbname'
+  APP_SECRET='yourdbsecret'
+  AWS_BUCKET='yourbucketname'
+  AWS_ACCESS_KEY_ID='youraccesskey'
+  AWS_SECRET_ACCESS_KEY='yoursecretkey'
+```
 
 #### <a name="resources"></a>Any resources that helped me complete this project:
-- Postman
-- AWS
+* Postman
+* AWS
 
 #### Notes to myself:
-* 9/12- POST and GET requests seem to be working in Postman. I am getting tokens. Still need to test PUT and DELETE. Also I only have what Scott wrote in demo code for tests. Still need to write tests for the second GET, PUT and DELETE.
-* cf-gram-dev is showing up as a database in the mongo shell!
+*
 
 ### <a name="collaborators"></a>Collaborators:
-Isiah! Said! Isaac!
+Said! Isaiah!
