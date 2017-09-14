@@ -15,16 +15,16 @@ let mongoConnection = mongoose.connect(process.env.MONGODB_URI, { useMongoClient
 // router-middleware
 require('../route/route-auth')(router);
 require('../route/route-gallery')(router);
+require('../route/route-photo')(router);
 
-// mount-middleware
-app.use(require('body-parser').json());
+// mount middleware
 app.use(require('cors')());
 app.use(router);
 
 app.all('/*', (req, res) => res.sendStatus(404));
 
-// control over start and stop
-const server = module.exports = {}
+// control over server start and stop
+const server = module.exports = {};
 server.isOn = false;
 server.start = () => {
   return new Promise((resolve, reject) => {
