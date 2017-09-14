@@ -39,7 +39,9 @@ module.exports = function(router) {
   //
   // })
 
-  // router.delete('/api/photo/:_id', bearerAuth, (req, res) => {
-  //
-  // })
+  router.delete('/api/photo/:_id', bearerAuth, (req, res) => {
+    return Photo.findByIdAndRemove(req.params._id)
+      .then(() => res.sendStatus(204))
+      .catch(err => errorHandler(err, req, res))
+  })
 }

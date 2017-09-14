@@ -14,5 +14,9 @@ module.exports = function(params) {
       if(err) reject(err)
       resolve(s3Data)
     })
+    s3.findByIdAndRemove(params, (err, s3Data) => {
+      if (err) reject(err)
+      resolve(s3Data)
+    })
   })
 }
