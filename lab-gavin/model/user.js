@@ -44,13 +44,13 @@ User.methods.generateFindHash = function() {
       let tries = 0;
       this.findHash = crypto.randomBytes(32).toString('hex');
       this.save()
-      .then(() => resolve(this.findHash))
-      .catch(err => {
-        console.log(err);
-        if(tries > 3) return reject(new Error('authorization failed, findhash failed'));
-        tries++;
-        _generateFindHash();
-      });
+        .then(() => resolve(this.findHash))
+        .catch(err => {
+          console.log(err);
+          if(tries > 3) return reject(new Error('authorization failed, findhash failed'));
+          tries++;
+          _generateFindHash();
+        });
     };
 
     _generateFindHash();
@@ -62,11 +62,11 @@ User.methods.generateToken = function() {
 
   return new Promise((resolve, reject) => {
     this.generateFindHash()
-    .then(findhash => resolve(jwt.sign({ token: findhash }, process.env.APP_SECRET)))
-    .catch(err => {
-      console.error(err);
-      reject(err);
-    });
+      .then(findhash => resolve(jwt.sign({ token: findhash }, process.env.APP_SECRET)))
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      });
   });
 };
 

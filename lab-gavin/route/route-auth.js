@@ -17,19 +17,19 @@ module.exports = function(router) {
     let user = new User(req.body);
 
     user.generatePasswordHash(pw)
-    .then(user => user.save())
-    .then(user => user.generateToken())
-    .then(token => res.status(201).send(token))
-    .catch(err => errorHandler(err, req, res));
+      .then(user => user.save())
+      .then(user => user.generateToken())
+      .then(token => res.status(201).send(token))
+      .catch(err => errorHandler(err, req, res));
   });
 
   router.get('/api/signin', basicAuth, (req, res) => {
     debug('GET /api/signin');
 
     return User.findOne({ username: req.auth.username })
-    .then(user => user.comparePasswordHash(req.auth.password))
-    .then(user => user.generateToken())
-    .then(token => res.send(token))
-    .catch(err => errorHandler(err, req, res));
+      .then(user => user.comparePasswordHash(req.auth.password))
+      .then(user => user.generateToken())
+      .then(token => res.send(token))
+      .catch(err => errorHandler(err, req, res));
   });
 };
