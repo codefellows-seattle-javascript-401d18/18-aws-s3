@@ -19,19 +19,17 @@ mocks.user.createOne = function() {
 
   return user.generatePasswordHash(result.password)
     .then(user => {
-      result.user = user;
+      this.result.user = user;
       return user.save()
     })
     .then(user => user.generateToken())
     .then(token => {
-      result.token = token;
-      return result;
+      this.sresult.token = token;
+      return this.result;
     });
 };
 
 mocks.gallery.createOne = function() {
-  let result = {};
-
   return mocks.user.createOne()
     .then(userData => this.result = userData)
     .then(userData => {
@@ -42,8 +40,8 @@ mocks.gallery.createOne = function() {
       }).save();
     })
     .then(gallery => {
-      this.result.gallery = gallery;//added this in code review
-      return result;
+      this.result.gallery = gallery;
+      return this.result;
     });
 };
 

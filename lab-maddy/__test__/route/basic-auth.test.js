@@ -33,28 +33,28 @@ describe('Testing basic auth routes', function() {
         expect(this.res.text).toBeTruthy();
         expect(this.res.text.length > 1).toBeTruthy();
       });
-      test('should return a status of 200', () => {
-        expect(this.res.status).toBe(200);
+      test('should return a status of 201', () => { //changed from 200 to 201
+        expect(this.res.status).toBe(201);
       });
     });
 
-    describe('Invalid Requests', () => {
-      xtest('should return a 400 Bad Request given bad req body', () => {
-        return superagent.post(':4444/api/signup')
-          .send({ username: 'wat' })
-          .catch(err => {
-            expect(err.status).toBe(400);
-          });
-      });
-      test('should return a 404 given bad route', () => {
-        return superagent.post(':4444/api/bad/route')
-          .send(this.mockUserData)
-          .catch(err => {
-            expect(err.status).toBe(404);
-          });
-      });
-    });
-  });
+  //   describe('Invalid Requests', () => {
+  //     test('should return a 400 Bad Request given bad req body', () => {
+  //       return superagent.post(':4444/api/signup')
+  //         .send({ username: 'wat' })
+  //         .catch(err => {
+  //           expect(err.status).toBe(400);
+  //         });
+  //     });
+  //     test('should return a 404 given bad route', () => {
+  //       return superagent.post(':4444/api/bad/route')
+  //         .send(this.mockUserData)
+  //         .catch(err => {
+  //           expect(err.status).toBe(404);
+  //         });
+  //     });
+  //   });
+  // });
 
   describe('GET to /api/signin', function() {
     beforeAll(() => {
