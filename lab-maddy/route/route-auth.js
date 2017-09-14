@@ -7,7 +7,7 @@ const basicAuth = require('../lib/basic-auth-middleware');
 const User = require('../model/user');
 
 module.exports = function(router) {
-  router.post('/api/signup', jsonParser (req, res) => {
+  router.post('/api/signup', jsonParser, (req, res) => {
     debug('POST /api/signup');
 
     // get rid of the PW on req.body before the req is handed back as a nested object in the res

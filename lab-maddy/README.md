@@ -8,6 +8,7 @@
 * [How another dev could 'get started' with my api on their own](#devsteps)
 * [Mongo database steps](#mongosteps)
 * [Packages and commands to remember](#packages)
+* [General Notes](#generalnotes)
 * [Any resources that helped me complete this project](#resources)
 * [Collaborators](#collaborators)
 
@@ -105,7 +106,7 @@ drop cf-gram-dev
 localhost:4000/api/signup
 ```
 
-### scott Example Requests
+### Scott's Example Requests
 * **POST /api/toy** (requires bearer auth token)
 `https://localhost:8080/api/toy`
 ```
@@ -121,6 +122,11 @@ js
 localhost:4000/api/signin
 ```
 
+### Example POST gallery request:
+```
+http POST localhost:3000/api/gallery name=name desc=password
+```
+
 ### Example PUT request:
 
 
@@ -129,50 +135,55 @@ localhost:4000/api/signin
 
 ### <a name="packages"></a>Packages and commands to remember:
 #### New packages (introduced for this project):
-* npm install jsonwebtoken (Tor jwt (JSON web tokens); this is what makes it possible for us to create user tokens)-
-* npm i bcrypt (For hashing user passwords) -
-* npm install dotenv (This is for ) -
+* npm install jsonwebtoken (For jwt (JSON web tokens); this is what makes it possible for us to create user tokens)
+* npm i bcrypt (For hashing user passwords)
+* npm install dotenv (This is for... )
 
 #### For Mongo:
-* npm install mongodb into your project directory (To install Mongo) -
+* npm install mongodb into your project directory (To install Mongo)
 * mongod (To start the MongoDB process)
-* mongo (To start the MongoDB shell-- )
+* mongo (To start the MongoDB shell)
 
 #### For Mongoose:
-* npm install mongoose (To install mongoose) -
+* npm install mongoose (To install mongoose)
 
 #### General:
   * In package.json's scripts, add- "start:debug": "DEBUG=http* nodemon server.js",
   * npm install express -
-  * npm i or npm install (For node modules) -
+  * npm i or npm install (For node modules)
 
 ###### HTTP requests:
-  * node server.js or just nodemon (to start a command line server) -
+  * node server.js or just nodemon (to start a command line server)
   * rs (restart, if needed)
   * ^C (control-C to stop node server)
   * npm install httpie (A command line HTTP client, to be able to test making http requests. An alternative is postman.)
-  * npm install superagent (To be able to make http requests) -
-  * npm install uuid (For creating unique user ids) -
-  * npm install -D jest (To be able to run tests) -
+  * npm install superagent (To be able to make http requests)
+  * npm install uuid (For creating unique user ids)
+  * npm install -D jest (To be able to run tests)
     - npm test (To actually run the jest test)
 
 ###### TESTS:
-  * run run start:watch (This option won't tell what is wrong with your code) -
+  * run run start:watch (This option won't tell what is wrong with your code)
   * npm run start:debug - (Then attempt a POST and this option will tell you where you are wrong)
-  * npm run debugger (Not sure what makes this one different or special yet...)-
+  * npm run debugger (Not sure what makes this one different or special yet...)
 
 ###### Not needed for every project:
-  * npm install bluebird (sets this as a dependency in package.json. Bluebird is a promise library) -
+  * npm install bluebird (sets this as a dependency in package.json. Bluebird is a promise library)
   * npm install faker (this gives provides us with fake data for testing things like user info- names, addresses, phone numbers, etc) - DONE
+  * npm install --save multer (for uploading files)-- DONE
+  * npm install aws-sdk (for interacting with AWS) --DONE
 
-#### General notes/changes made from previous projects:
-* Created a .env file with the following:
+#### <a name="generalnotes"></a>General notes/changes made from previous projects:
+* How to configure this labs' .env file:
   - Note: The angle brackets are just placeholders and should not be included in your code.
 
 ```
-MONGODB_URI='mongodb://localhost/<name of your database>'
-APP_SECRET='<a secret word>'
-PORT=<a port number>
+PORT='8000'
+MONGODB_URI='mongodb://localhost/<db_name>'
+APP_SECRET='yourdbsecret'
+AWS_BUCKET='<your_bucket_name>'
+AWS_ACCESS_KEY_ID='<your_key>'
+AWS_SECRET_ACCESS_KEY='<your_key>'
 ```
 
 * In package.json, within scripts add the '--runInBand' to the 'test: jest.' This will make sure all tests run sequentially.
@@ -210,15 +221,6 @@ PORT=<a port number>
 8. Should see a green 'Success'
 9. Click the next button, should see Access Key ID and Secret access key
 
-#### How to configure your .env file:
-```
-PORT='8000'
-  MONGODB_URI='mongodb://localhost/yourdbname'
-  APP_SECRET='yourdbsecret'
-  AWS_BUCKET='yourbucketname'
-  AWS_ACCESS_KEY_ID='youraccesskey'
-  AWS_SECRET_ACCESS_KEY='yoursecretkey'
-```
 
 #### <a name="resources"></a>Any resources that helped me complete this project:
 * Postman
@@ -228,4 +230,4 @@ PORT='8000'
 *
 
 ### <a name="collaborators"></a>Collaborators:
-Said! Isaiah! Isaiah helped on ton with writing routes! 
+Said! Isaiah! Isaiah helped on ton with writing routes!
