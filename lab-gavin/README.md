@@ -80,6 +80,29 @@ Using node.js, HTTP, superagent, Express, MongoDB, and Mongoose I have created a
     "desc": "purple dino"
   } -->
 
+  + Also from the the second terminal window you can make a series of GET, POST, PUT, and DELETE requests to upload a photo.
+
+  ## All routes require an AUTH token which you recieve on signup/signin
+  ### Photo POST
+  + Example ==>`http POST localhost:3000/api/photo image name desc galleryId`
+  + Example w/ Mock info ==> `http POST localhost:3000/api/photo image=directPathToImage.png name=TestImage desc=TestImageDesc galleryId=3766474738822`
+
+  ### Photo GET
+  + Example.==>`http GET localhost:3000/api/photo/_id:`
+  + Example w/ Mock ID ==> `http GET localhost:3000/api/photo/377448883737262`
+
+  ### Photo GETALL
+  + Example.==>`http GET localhost:3000/api/photo`
+  + Example w/ Mock ID ==> `http GET localhost:3000/api/photo`
+
+  ### Photo PUT
+  + Example.==>`http GET localhost:3000/api/photo/_id: image= name= desc= galleryId=`
+  + Example w/ Mock ID ==> `http PUT localhost:3000/api/photo/3384748484 image=directPathToImage.png name=TestImage desc=TestImageDesc galleryId=3766474738822`
+
+  ### Photo DELETE
+  + Example.==>`http GET localhost:3000/api/photo/_id:`
+  + Example w/ Mock ID ==> `http GET localhost:3000/api/photo/484747483 objectKey=23452345fsdg userId=afdgsfdg3454`
+
 
 
 <!-- ```
