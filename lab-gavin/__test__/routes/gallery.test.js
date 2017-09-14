@@ -7,7 +7,7 @@ const server = require('../../lib/server');
 // const Gallery = require('../../model/gallery');
 require('jest');
 
-describe('Testing Gallery Routes', function() {
+xdescribe('Testing Gallery Routes', function() {
   beforeAll(server.start);
   afterAll(server.stop);
   afterEach(mocks.gallery.removeAll);
