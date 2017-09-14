@@ -1,6 +1,6 @@
-# Documentation
+### Documentation
 
-### Table of Contents:
+#### Table of Contents:
 
 * [What this project does](#whatthisprojectdoes)
 * [Learning Objectives](#learningobjectives)
@@ -8,22 +8,22 @@
 * [How another dev could 'get started' with my api on their own](#devsteps)
 * [Mongo database steps](#mongosteps)
 * [Packages and commands to remember](#packages)
-* [Any resources that helped me complete this assignment](#resources)
+* [Any resources that helped me complete this project](#resources)
 * [Collaborators](#collaborators)
 
-# <a name="whatthisprojectdoes"></a>What this project does:
+### <a name="whatthisprojectdoes"></a>What this project does:
 The final goal for this project is to create a mock version of instagram. We're calling it CF gram. CF gram is an app that can let users sign up, sign in, create galleries, and then add images that belong to those galleries. We will be using Amazon Web Services (AWS) as our database to store these images.
 
 Today's lab assumes the user has a token and we can now make galleries for these users. And publish them using an AWS service called S3; we will incorporate AWS in tomorrow's lab.
 
 We are now using Bearer to allow the user to make updates/changes to their login information.
 
-## <a name="learningobjectives"></a>Learning Objectives:
+### <a name="learningobjectives"></a>Learning Objectives:
 * We will be able to create bearer authentication middleware.
 * We will be able to utilize their bearer authentication middleware in their route structures.
 * We will be able to test against authenticated routes.
 
-## <a name="stepsforme"></a>Steps for me to complete:
+### <a name="stepsforme"></a>Steps for me to complete:
 * create a bearer auth middleware module (feel free to use the one from lecture as a reference point)
 --> DONE - bearer-auth-middleware.js
 * create a new resource that has at least three properties
@@ -41,7 +41,7 @@ We are now using Bearer to allow the user to make updates/changes to their login
 --> DONE - within route-gallery.js
 
 
-## <a name="devsteps"></a>How another dev could 'get started' with my api on their own:
+### <a name="devsteps"></a>How another dev could 'get started' with my api on their own:
   * How do you clone this project?
       1. First click on the Fork button in the upper right hand corner to make a copy of my repository.
       2. That will automatically take you to your github. Then click on the green 'clone or download' button to copy the URL to your machines clipboard.
@@ -58,7 +58,7 @@ We are now using Bearer to allow the user to make updates/changes to their login
       **/node_modules/*
       ```
 
-# <a name="mongosteps"></a>Mongo database steps:
+### <a name="mongosteps"></a>Mongo database steps:
 1. Create db folder within data folder.
 
 2. Upper right window (within lab-maddy folder)
@@ -75,36 +75,36 @@ npm run start:watch
 ```
 5. Lower left window - POST, GET, PUT, DELETE requests
 
-### To see what's in your database:
+#### To see what's in your database:
 ````
 show dbs
 ````
-### Open a database:
+#### Open a database:
 ```
 use <db_name>
 ```
-### Show collections:
+#### Show collections:
 ```
 show collections
 ```
-### To open the collection you're working with:
+#### To open the collection you're working with:
 ```
 use cf-gram-dev
 ```
-### To delete the data in the collection:
+#### To delete the data in the collection:
 ```
 drop cf-gram-dev
 ```
 
-## To test POST, GET, PUT and DELETE an object on the server, use these requests in terminal (we're able to do this with the http client superagent):
+### To test POST, GET, PUT and DELETE an object on the server, use these requests in terminal (we're able to do this with the http client superagent):
 
 
-## Example POST(sign up) request in Postman:
+### Example POST(sign up) request in Postman:
 ```
 localhost:4000/api/signup
 ```
 
-## scott Example Requests
+### scott Example Requests
 * **POST /api/toy** (requires bearer auth token)
 `https://localhost:8080/api/toy`
 ```
@@ -115,37 +115,37 @@ js
   "desc": "purple dino"
 }
 ```
-## Example GET(sign in) request in Postman:
+### Example GET(sign in) request in Postman:
 ```
 localhost:4000/api/signin
 ```
 
-## Example PUT request:
+### Example PUT request:
 
 
-## Example DELETE request:
+### Example DELETE request:
 
 
-# <a name="packages"></a>Packages and commands to remember:
-## New packages (introduced for this project):
+### <a name="packages"></a>Packages and commands to remember:
+#### New packages (introduced for this project):
 - npm install jsonwebtoken (Tor jwt (JSON web tokens); this is what makes it possible for us to create user tokens)-
 - npm i bcrypt (For hashing user passwords) -
 - npm install dotenv (This is for ) -
 
-## For Mongo:
+#### For Mongo:
 - npm install mongodb into your project directory (To install Mongo) -
 - mongod (To start the MongoDB process)
 - mongo (To start the MongoDB shell-- )
 
-## For Mongoose:
+#### For Mongoose:
 - npm install mongoose (To install mongoose) -
 
-## General:
+#### General:
   - In package.json's scripts, add- "start:debug": "DEBUG=http* nodemon server.js",
   - npm install express -
   - npm i or npm install (For node modules) -
 
-### HTTP requests:
+###### HTTP requests:
   - node server.js or just nodemon (to start a command line server) -
   - rs (restart, if needed)
   - ^C (control-C to stop node server)
@@ -155,16 +155,16 @@ localhost:4000/api/signin
   - npm install -D jest (To be able to run tests) -
     - npm test (To actually run the jest test)
 
-### TESTS:
+###### TESTS:
   - run run start:watch (This option won't tell what is wrong with your code) -
   - npm run start:debug - (Then attempt a POST and this option will tell you where you are wrong)
   - npm run debugger (Not sure what makes this one different or special yet...)-
 
-### Not needed for every project:
+###### Not needed for every project:
   - npm install bluebird (sets this as a dependency in package.json. Bluebird is a promise library) -
   - npm install faker (this gives provides us with fake data for testing things like user info- names, addresses, phone numbers, etc) - DONE
 
-## General notes/changes made from previous projects:
+#### General notes/changes made from previous projects:
 - Created an index.js and set it as the start point in package.json.
 - Created a .env file with the following:
   - Note: The angle brackets are just placeholders and should not be included in your code.
@@ -196,13 +196,13 @@ PORT=<a port number>
 - Added multer to package.json
 - Added aws-sdk to package.json
 
-## <a name="resources"></a>Any resources that helped me complete this assignment:
+#### <a name="resources"></a>Any resources that helped me complete this project:
 - Postman
 - AWS
 
-## Notes to myself:
+#### Notes to myself:
 * 9/12- POST and GET requests seem to be working in Postman. I am getting tokens. Still need to test PUT and DELETE. Also I only have what Scott wrote in demo code for tests. Still need to write tests for the second GET, PUT and DELETE.
 * cf-gram-dev is showing up as a database in the mongo shell!
 
-# <a name="collaborators"></a>Collaborators:
+### <a name="collaborators"></a>Collaborators:
 Isiah! Said! Isaac!
