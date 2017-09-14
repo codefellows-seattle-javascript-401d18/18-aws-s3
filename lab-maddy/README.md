@@ -1,9 +1,10 @@
 # Documentation
 
-# Table of Contents:
-* [What this project does:](## What this project does:)
+### Table of Contents
 
-## <a name="What this project does:"></a> What this project does:
+* [What this project does](#whatthisprojectdoes)
+
+# <a name="whatthisprojectdoes"></a>What this project does:
 The final goal for this project is to create a mock version of instagram. We're calling it CF gram. CF gram is an app that can let users sign up, sign in, create galleries, and then add images that belong to those galleries. We will be using Amazon Web Services (AWS) as our database to store these images.
 
 Today's lab assumes the user has a token and we can now make galleries for these users. And publish them using an AWS service called S3; we will incorporate AWS in tomorrow's lab.
