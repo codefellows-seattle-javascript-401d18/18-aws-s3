@@ -29,14 +29,17 @@ module.exports = function(router) {
   router.get('/api/photo', bearerAuth, (req, res) => {
     debug('GETALL /api/photo');
 
-    return Photo.find();
-    then(photos => res.json(photos.map(photo => photo._id))
-
+    return Photo.find()
+      .then(photos => res.json(photos.map(photo => photo._id)));
   });
+
   router.put('/api/photo/:_id', bearerAuth, upload.single('image'), (req, res) => {
+    debug('PUT /api/photo');
 
   });
   router.delete('/api/photo/:_id', bearerAuth, (req, res) => {
+    debug('DELETE /api/photo');
+
 
   });
 };
