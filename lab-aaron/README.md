@@ -1,4 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) 17: CODE-FELLOWSGRAM
+![cf](http://i.imgur.com/7v5ASc8.png) 17: CODE-FELLOWS-GRAM
 =====================================
 
 ## Creating a Password Protected Server
@@ -12,44 +12,33 @@ With the Gallery you are able to add, update and remove images.
 Clone the repository to whatever location you would like it stored in.
 
 In terminal use this command while in the project file:
+
  `npm i`
+
 This will install all the required dependencies for the app.
 
 You should have multiple terminal windows open. Either in a terminal window or in the background, should have your Mongo Database running. In another window you should install, if you haven't already, HTTPie. In yet another window, you should open your mongodb shell.
 
 Start MongoDB:
+
 `brew services start mongo`
+
 this starts the server in the background
 
 To enter the mongo shell:
+
 `mongo`
 
 In another window you can begin to signup and login!!
 
 ### Using the App
 This will sign you up for the app.
+
  `http POST localhost:5000/api/signup username=username password=password email=user-email`
 
  You should also be able to get signed in to the app;
- `http GET localhost:5000/api/signin username:password`;
 
- To POST to your Gallery use this command;
-  ``
-
- To GET a item from your Gallery;
- ``
-
- To GETALL items from your Gallery;
- ``
-
- To PUT /update items in your Gallery;
- ``
-
- To DELETE items from your Gallery;
- ``
-
-
-
+ `http GET localhost:5000/api/signin username:password`
 
 
 #### Documentation for App
