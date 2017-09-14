@@ -129,44 +129,44 @@ localhost:4000/api/signin
 
 ### <a name="packages"></a>Packages and commands to remember:
 #### New packages (introduced for this project):
-- npm install jsonwebtoken (Tor jwt (JSON web tokens); this is what makes it possible for us to create user tokens)-
-- npm i bcrypt (For hashing user passwords) -
-- npm install dotenv (This is for ) -
+* npm install jsonwebtoken (Tor jwt (JSON web tokens); this is what makes it possible for us to create user tokens)-
+* npm i bcrypt (For hashing user passwords) -
+* npm install dotenv (This is for ) -
 
 #### For Mongo:
-- npm install mongodb into your project directory (To install Mongo) -
-- mongod (To start the MongoDB process)
-- mongo (To start the MongoDB shell-- )
+* npm install mongodb into your project directory (To install Mongo) -
+* mongod (To start the MongoDB process)
+* mongo (To start the MongoDB shell-- )
 
 #### For Mongoose:
-- npm install mongoose (To install mongoose) -
+* npm install mongoose (To install mongoose) -
 
 #### General:
-  - In package.json's scripts, add- "start:debug": "DEBUG=http* nodemon server.js",
-  - npm install express -
-  - npm i or npm install (For node modules) -
+  * In package.json's scripts, add- "start:debug": "DEBUG=http* nodemon server.js",
+  * npm install express -
+  * npm i or npm install (For node modules) -
 
 ###### HTTP requests:
-  - node server.js or just nodemon (to start a command line server) -
-  - rs (restart, if needed)
-  - ^C (control-C to stop node server)
-  - npm install httpie (A command line HTTP client, to be able to test making http requests. An alternative is postman.)
-  - npm install superagent (To be able to make http requests) -
-  - npm install uuid (For creating unique user ids) -
-  - npm install -D jest (To be able to run tests) -
+  * node server.js or just nodemon (to start a command line server) -
+  * rs (restart, if needed)
+  * ^C (control-C to stop node server)
+  * npm install httpie (A command line HTTP client, to be able to test making http requests. An alternative is postman.)
+  * npm install superagent (To be able to make http requests) -
+  * npm install uuid (For creating unique user ids) -
+  * npm install -D jest (To be able to run tests) -
     - npm test (To actually run the jest test)
 
 ###### TESTS:
-  - run run start:watch (This option won't tell what is wrong with your code) -
-  - npm run start:debug - (Then attempt a POST and this option will tell you where you are wrong)
-  - npm run debugger (Not sure what makes this one different or special yet...)-
+  * run run start:watch (This option won't tell what is wrong with your code) -
+  * npm run start:debug - (Then attempt a POST and this option will tell you where you are wrong)
+  * npm run debugger (Not sure what makes this one different or special yet...)-
 
 ###### Not needed for every project:
-  - npm install bluebird (sets this as a dependency in package.json. Bluebird is a promise library) -
-  - npm install faker (this gives provides us with fake data for testing things like user info- names, addresses, phone numbers, etc) - DONE
+  * npm install bluebird (sets this as a dependency in package.json. Bluebird is a promise library) -
+  * npm install faker (this gives provides us with fake data for testing things like user info- names, addresses, phone numbers, etc) - DONE
 
 #### General notes/changes made from previous projects:
-- Created a .env file with the following:
+* Created a .env file with the following:
   - Note: The angle brackets are just placeholders and should not be included in your code.
 
 ```
@@ -175,32 +175,29 @@ APP_SECRET='<a secret word>'
 PORT=<a port number>
 ```
 
-- In package.json, within scripts add the '--runInBand' to the 'test: jest.' This will make sure all tests run sequentially.
+* In package.json, within scripts add the '--runInBand' to the 'test: jest.' This will make sure all tests run sequentially.
 ```
 "test": "jest --runInBand",
 ```
-- Don't push an AWS key to github!!!
-- I copied my work from lab 16 into this lab.
-- Tests from lab 14 will help with the test for this lab.- gavin
-- Create an AWS account
-- Created a `.env` & `.test.env` files
-- Isaiah recommended adding this as an additional test command in package.json-    
+* I copied my work from lab 17 into this lab.
+* Create an AWS account
+* Created `.env` & `.test.env` files
+* Isaiah recommended adding this as an additional test command in package.json-    
 ```
  "testtwo": "jest -i",
  ```
- - Signed up for AWS.
- - FYI, if anyone wants to keep using httpie, here's a sample request to show how you would format to use a token for auth:
+ * Signed up for AWS
+ * FYI, if anyone wants to keep using httpie, here's a sample request to show how you would format to use a token for auth:
  ```
 `http GET :5000/api/gallery/1234-5678   'Authorization:Bearer myWonderfulToken'`
 ```
-- Added multer to package.json
-- Added aws-sdk to package.json
-- Added a .travis.yml file
-- New package: del - creates binary representation of an image, del deletes that stuff after hte image is in allows
-- New package: multer- have a form where we can upload an image and it's going to get sent as form data not raw json cause we can't translate a raw image as raw json we have to send it as ....breaks it down. its middleware. uses binary data to upload to s3 then deletes that binary file.
-- In server.js we 'server.stop = () => {'' the server and .close() the mongoConnection.
-- Bucket name: cf-401-maddybucket
-- Signed up for billing email notifications, for the 1% off chance that someone gets ahold of my AWS key.
+* New package: aws-sdk - allows our app to interact with AWS
+* Added a .travis.yml file
+* New package: del - creates binary representation of an image, del deletes that stuff after hte image is in allows
+* New package: multer- allows us to have a form where we can upload an image and it's going to get sent as form data not raw json cause we can't translate a raw image as raw json we have to send it as ....breaks it down. its middleware. uses binary data to upload to s3 then deletes that binary file.
+* In server.js we 'server.stop = () => {'' the server and .close() the mongoConnection.
+* Bucket name: cf-401-maddybucket
+* Signed up for billing email notifications, for the 1% off chance that someone gets ahold of my AWS key.
 
 #### How to make an AWS bucket:
 1. create bucket- cf-401-maddybucket
@@ -231,4 +228,4 @@ PORT='8000'
 *
 
 ### <a name="collaborators"></a>Collaborators:
-Said! Isaiah!
+Said! Isaiah! Isaiah helped on ton with writing routes! 
