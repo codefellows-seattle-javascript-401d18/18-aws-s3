@@ -21,18 +21,25 @@ module.exports = function(router) {
   })
 
   router.get('/api/photo/:_id', bearerAuth, (req, res) => {
+    debug('GET /api/photo/:_id')
 
+    return Photo.findById(req.params._id)
+      .then(photo => res.json(photo))
+      .catch(err => errorHandler(err, req, res))
   })
 
   router.get('/api/photo', bearerAuth, (req, res) => {
+    debug('GET ALL /api/photo')
 
+    return Photo.find()
+      .then(photos => res.json(photos.map(photo => photo._id)))
   })
 
-  router.put('/api/photo/:_id', bearerAuth, (req, res) => {
+  // router.put('/api/photo/:_id', bearerAuth, (req, res) => {
+  //
+  // })
 
-  })
-
-  router.delete('/api/photo/:_id', bearerAuth, (req, res) => {
-
-  })
+  // router.delete('/api/photo/:_id', bearerAuth, (req, res) => {
+  //
+  // })
 }
