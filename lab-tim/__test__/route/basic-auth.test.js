@@ -39,7 +39,7 @@ describe('Testing basic auth routes', function() {
     });
 
     describe('Invalid Requests', () => {
-      test.only('should return a 400 Bad Request given bad req body', () => {
+      test('should return a 400 Bad Request given bad req body', () => {
         return superagent.post(':4444/api/signup')
           .send({ username: 'wat' })
           .catch(err => {

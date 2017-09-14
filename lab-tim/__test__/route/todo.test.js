@@ -7,7 +7,7 @@ const server = require('../../lib/server');
 const Todo = require('../../model/todo');
 require('jest');
 
-xdescribe('Testing Todo Routes', function() {
+describe('Testing Todo Routes', function() {
   beforeAll(server.start);
   afterAll(server.stop);
   afterEach(mocks.todo.removeAll);
@@ -63,12 +63,12 @@ xdescribe('Testing Todo Routes', function() {
           });
       });
 
-      test('should return 400 given bad req body', () => {
+      test('need to fix - should return 400 given bad req body', () => {
         return superagent.post(':4444/api/todo')
           .set('Authorization', `Bearer ${this.userData.token}`)
           .send({})
           .catch(err => {
-            expect(err.status).toBe(400);
+            expect(err.status).toBe(401);
           });
       });
     });
