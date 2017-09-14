@@ -1,8 +1,15 @@
 # Documentation
 
-### Table of Contents
+### Table of Contents:
 
 * [What this project does](#whatthisprojectdoes)
+* [Learning Objectives](#learningobjectives)
+* [Steps for me to complete](#stepsforme)
+* [How another dev could 'get started' with my api on their own](#devsteps)
+* [Mongo database steps](#mongosteps)
+* [Packages and commands to remember](#packages)
+* [Any resources that helped me complete this assignment](#resources)
+* [Collaborators](#collaborators)
 
 # <a name="whatthisprojectdoes"></a>What this project does:
 The final goal for this project is to create a mock version of instagram. We're calling it CF gram. CF gram is an app that can let users sign up, sign in, create galleries, and then add images that belong to those galleries. We will be using Amazon Web Services (AWS) as our database to store these images.
@@ -11,12 +18,12 @@ Today's lab assumes the user has a token and we can now make galleries for these
 
 We are now using Bearer to allow the user to make updates/changes to their login information.
 
-## Learning Objectives:
+## <a name="learningobjectives"></a>Learning Objectives:
 * We will be able to create bearer authentication middleware.
 * We will be able to utilize their bearer authentication middleware in their route structures.
 * We will be able to test against authenticated routes.
 
-## Steps for me to complete:
+## <a name="stepsforme"></a>Steps for me to complete:
 * create a bearer auth middleware module (feel free to use the one from lecture as a reference point)
 --> DONE - bearer-auth-middleware.js
 * create a new resource that has at least three properties
@@ -34,7 +41,7 @@ We are now using Bearer to allow the user to make updates/changes to their login
 --> DONE - within route-gallery.js
 
 
-## How another dev could 'get started' with my api on their own:
+## <a name="devsteps"></a>How another dev could 'get started' with my api on their own:
   * How do you clone this project?
       1. First click on the Fork button in the upper right hand corner to make a copy of my repository.
       2. That will automatically take you to your github. Then click on the green 'clone or download' button to copy the URL to your machines clipboard.
@@ -51,7 +58,7 @@ We are now using Bearer to allow the user to make updates/changes to their login
       **/node_modules/*
       ```
 
-# Mongo database steps:
+# <a name="mongosteps"></a>Mongo database steps:
 1. Create db folder within data folder.
 
 2. Upper right window (within lab-maddy folder)
@@ -119,7 +126,7 @@ localhost:4000/api/signin
 ## Example DELETE request:
 
 
-# Packages and commands to remember:
+# <a name="packages"></a>Packages and commands to remember:
 ## New packages (introduced for this project):
 - npm install jsonwebtoken (Tor jwt (JSON web tokens); this is what makes it possible for us to create user tokens)-
 - npm i bcrypt (For hashing user passwords) -
@@ -189,7 +196,7 @@ PORT=<a port number>
 - Added multer to package.json
 - Added aws-sdk to package.json
 
-## Any resources that helped me complete this assignment:
+## <a name="resources"></a>Any resources that helped me complete this assignment:
 - Postman
 - AWS
 
@@ -197,5 +204,5 @@ PORT=<a port number>
 * 9/12- POST and GET requests seem to be working in Postman. I am getting tokens. Still need to test PUT and DELETE. Also I only have what Scott wrote in demo code for tests. Still need to write tests for the second GET, PUT and DELETE.
 * cf-gram-dev is showing up as a database in the mongo shell!
 
-# Collaborators:
+# <a name="collaborators"></a>Collaborators:
 Isiah! Said! Isaac!
